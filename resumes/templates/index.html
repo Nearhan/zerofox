@@ -1,0 +1,20 @@
+<html>
+
+<head>
+</head>
+<body>
+    <h1> Welcome to the greatest Resume Site ever!! </h1>
+
+    {% if user_created %}
+        <h2> Thanks for registering, Now please log in with your Creds </h2>
+    {% endif %}
+    <form action="" method="post"> {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="ok">
+    </form>
+
+    <a href="{% url 'sign_in' %}"> Sign Up!!! </a>
+</body>
+
+</html>
+
