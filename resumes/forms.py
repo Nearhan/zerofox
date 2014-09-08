@@ -32,7 +32,15 @@ class ResumeModelForm(forms.ModelForm):
 
     class Meta:
         model = Resume
-        fields = ('first_name', 'last_name', 'objective', 'email', 'phone_number')
+        exclude = ['user']
+        fields = ('first_name', 'last_name', 'objective', 'email',
+                  'phone_number')
 
 
+class JobModelForm(forms.ModelForm):
 
+    class Meta:
+        model = Job
+        exclude = ['resume']
+        fields = ('company', 'title', 'location', 'summary', 'start_date',
+                  'end_date')

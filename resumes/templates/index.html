@@ -1,20 +1,23 @@
-<html>
+{% extends "base.html" %}
+{% load bootstrap3 %}
 
-<head>
-</head>
-<body>
-    <h1> Welcome to the greatest Resume Site ever!! </h1>
 
+{% block main %}
+    <a href="signIn" class="btn btn-default btn-sm" role="button">Sign Up</a>
+    <br />
+    <br />
     {% if user_created %}
-        <h2> Thanks for registering, Now please log in with your Creds </h2>
+        <h3 class="bg-success">Thanks for registering, Now please log in to continue </h3>
     {% endif %}
-    <form action="" method="post"> {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="ok">
+
+    <form action="" method="post" class="form" novalidate>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% bootstrap_icon "ok" %} Submit
+            </button>
+        {% endbuttons %}
     </form>
 
-    <a href="{% url 'sign_in' %}"> Sign Up!!! </a>
-</body>
-
-</html>
-
+{% endblock %}

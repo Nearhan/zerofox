@@ -1,10 +1,31 @@
-<html>
+{% extends "base.html" %}
+{% load bootstrap3 %}
 
-<head>
-</head>
-<body>
-    {{ form }}
-</body>
 
-</html>
-
+{% block main %}
+    {% if resume %}
+        <h2> {% bootstrap_icon "user" %} {{ resume.first_name }} {{ resume.last_name }} </h2>
+        <p>{% bootstrap_icon "phone" %} {{ resume.phone_number }}</p>
+        <p>{% bootstrap_icon "inbox" %} {{ resume.email }}</p>
+        <p>{% bootstrap_icon "pushpin" %} {{ resume.objective }}</p>
+        {% for job in jobs %}
+            <hr>
+                <h3> {% bootstrap_icon "briefcase" %} {{ job.title }}
+                <h4> {% bootstrap_icon "home" %} {{ job.company }}</h4>
+                <h5> {% bootstrap_icon "globe" %} {{ job.location }}</h4>
+                <h5> {% bootstrap_icon "calendar" %} {{ job.start_date }} {% bootstrap_icon "arrow-right" %} 
+                    {% if job.end_date %} {{ job.end_date }}
+                    {% else %}
+                    Present
+                    {% endif %}
+                </h5>
+                    <br />
+                    <br />
+                    <p> {{ job.summary }} </p>
+            <hr>
+        {% endfor %}
+    <a href="/add_position/" class="btn btn-primary btn-lg" role="button">Add a position</a>
+    {% else %}
+    <a href="/create_resume/" class="btn btn-primary btn-lg" role="button">Create a New Resume</a>
+    {% endif %}   
+{% endblock %}
