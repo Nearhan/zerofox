@@ -151,3 +151,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = 'sign_up'

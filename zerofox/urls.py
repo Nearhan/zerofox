@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'zerofox.views.home', name='home'),
     url(r'^$', WelcomeView.as_view(), name='welcome'),
     url(r'^(?P<created>created=True)$', WelcomeView.as_view(), name='welcome'),
-    url(r'^signIn', CreateUserView.as_view(), name='sign_in'),
+    url(r'^signUp', CreateUserView.as_view(), name='sign_up'),
     url(r'^resume', ResumeDetailView.as_view(), name='resume_list'),
     url(r'^create_resume', ResumeCreateView.as_view(), name='create_resume'),
     url(r'^add_position', JobCreateView.as_view(), name='create_job')
